@@ -8,16 +8,13 @@ public class Zoltar {
 
     public static void main(String[] args) {
         int porta = 5555;
-
+        Zoltar zServer= new Zoltar();
         try (ServerSocket serverSocket = new ServerSocket(porta)) {
-            System.out.println("Zoltar è pronto sulla porta " + porta + "...");
-
+            System.out.println("Zoltar è pronto sulla porta " + porta);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Nuovo utente connesso: " + clientSocket.getInetAddress());
-
-                // Istanzia il thread per gestire la connessione del client
-                ThreadGestoreClient gestore = new ThreadGestoreClient(clientSocket);
+                ThreadGestoreServer gestore = new ThreadGestoreServer(clientSocket, zServer);
                 Thread t = new Thread(gestore);
                 t.start();
             }
