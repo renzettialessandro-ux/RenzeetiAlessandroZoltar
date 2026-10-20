@@ -24,12 +24,31 @@ public class RenzettiAlessandroZoltarClient {
         int porta = 5555;
 
         try (
-            Socket socket = new Socket(indirizzoServer, porta);
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            Scanner scanner = new Scanner(System.in)
-        ) {
+                Socket socket = new Socket(indirizzoServer, porta); DataInputStream in = new DataInputStream(socket.getInputStream()); DataOutputStream out = new DataOutputStream(socket.getOutputStream()); Scanner scanner = new Scanner(System.in)) {
             System.out.println("=== Sei di fronte al grande Zoltar ===");
+
+            // --- SCELTA PERSONALITÀ (nuovo) ---
+            System.out.println("Scegli la personalità di Zoltar:");
+            System.out.println("1) Saggio");
+            System.out.println("2) Sarcastico");
+            System.out.println("3) Misterioso");
+            System.out.print("Scelta: ");
+
+            String tipo;
+            switch (scanner.nextLine().trim()) {
+                case "2":
+                    tipo = "sarcastico";
+                    break;
+                case "3":
+                    tipo = "buso";
+                    break;
+                default:
+                    tipo = "saggio";
+            }
+
+            out.writeUTF(tipo);
+            out.flush();
+            // --- FINE SCELTA ---
 
             while (true) {
                 System.out.print("\nFai una domanda (scrivi 'exit' per uscire): ");
@@ -50,5 +69,5 @@ public class RenzettiAlessandroZoltarClient {
             System.out.println("Impossibile connettersi al server Zoltar.");
         }
     }
-    
+
 }

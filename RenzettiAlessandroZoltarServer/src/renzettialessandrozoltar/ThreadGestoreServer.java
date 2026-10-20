@@ -20,9 +20,10 @@ public class ThreadGestoreServer implements Runnable {
     @Override
     public void run() {
         try {
+            
             in = new DataInputStream(clientSocket.getInputStream());
             out = new DataOutputStream(clientSocket.getOutputStream());
-
+            gestoreDomande.tipo = in.readUTF(); 
             while (attivo) {
                 String domanda = in.readUTF();
                 if (domanda.equalsIgnoreCase("exit")) {
