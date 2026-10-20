@@ -15,7 +15,7 @@ public class RenzettiAlessandroZoltar {
     private Zoltar zServer= new Zoltar();
     public void avvia() {
         try (ServerSocket serverSocket = new ServerSocket(PORTA)) {
-            System.out.println("Server avviato sulla porta " + PORTA + ". In attesa di client...");
+            System.out.println("Server avviato... In attesa di client...");
             new Thread(this::gestisciConsole).start();
             while (true) {
                 Socket socket = serverSocket.accept();

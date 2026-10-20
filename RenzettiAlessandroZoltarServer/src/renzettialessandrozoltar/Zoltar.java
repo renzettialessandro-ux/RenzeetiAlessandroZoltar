@@ -10,7 +10,6 @@ public class Zoltar {
         int porta = 5555;
         Zoltar zServer= new Zoltar();
         try (ServerSocket serverSocket = new ServerSocket(porta)) {
-            System.out.println("Zoltar è pronto sulla porta " + porta);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Nuovo utente connesso: " + clientSocket.getInetAddress());

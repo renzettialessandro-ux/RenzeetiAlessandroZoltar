@@ -31,7 +31,7 @@ public class RenzettiAlessandroZoltarClient {
             System.out.println("Scegli la personalità di Zoltar:");
             System.out.println("1) Saggio");
             System.out.println("2) Sarcastico");
-            System.out.println("3) Misterioso");
+            System.out.println("3) Buso");
             System.out.print("Scelta: ");
 
             String tipo;
